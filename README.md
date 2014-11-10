@@ -1,4 +1,4 @@
-PC-Board-Mill
+PCB2
 =============
 
 Workflow and scripts to support printed circuit board (PCB) milling with the Roland MDX-40A and PC-Board Cam software.
