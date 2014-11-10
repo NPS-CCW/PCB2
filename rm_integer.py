@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
 #
-# G_final_2.py
+# rm_integer.py
 # Zac Staples
 # zhstaple(at)nps(dot)edu
 # directer NPS-DAZL group
 # github: https://github.com/NPS-DAZL
 #
 # Usage:
-#   G -code files produced by PCBmill will not load onto the Roland
+#   G -code files produced by PC-Board Cam will not load onto the Roland
 #   MDX-40A mill we use to cut PCB's because of formatting issues
 #   in the files.
 #
@@ -28,7 +28,7 @@ import sys
 
 # conduct argument checking
 if(len(sys.argv) != 2):
-    print("Usage: G_final.py <filename>")
+    print("Usage: rm_integer <filename>")
     print("\t<filename> must point to the G-code file output from PC-Board Mill.")
     sys.exit()
 
@@ -57,7 +57,7 @@ outfile = open(outfile_name, 'w')
 
 # We need to make sure there is a decimal point in 
 # commands for the feed rate and all axes
-first_letters = ("F", "Z", "X", "Y")
+first_letters = ("F", "Z", "X", "Y", "I", "J")
 
 # Look at all lines
 for line in lines:
