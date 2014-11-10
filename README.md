@@ -18,6 +18,7 @@ We are trying to produce quick prototype single and double layer printed PCBs us
 7. Load the modified drill file into PC-Board Cam.
 8. When you load the holes they will not line up with the pads in the signal layer.  Use the reference pads tool (bright pink circle targe in the toolbar) to align the two files.
 9. For single sided boards consider flipping the file in PC-Board Cam.  This will allow you to install components on the substrate side of the board with through-hole components being soldered on the copper side.  Makes for much neater and easier to solder boards.
-10. When things look good use the Maching > Mill... option in PC-Board Cam to output a G-Code file.  This G-Code file is the instruction set that will run on the Roland MDX-40A (or any other CNC mill).
-11. BUT...the output from PC-Board Cam has integer values that will cause errors.  Feed rates and X, Y and Z axis coordinates cannot be integer values(i.e. F60 X20 will cause and error).  Integer valued quantities must include a trailing zero(i.e. F60.0 X20.0).  
-12. Run the post-processing script on the output file to to correct all these coordinates.
+10. In PC-Board Cam select Parameters > Output data format and select "G-Code, ISO standard" from the drop-down menu.  Then select your output filename and location next to the "Create File" radio button.
+11. When things look good use the Maching > Mill... option in PC-Board Cam to output a G-Code file.  This G-Code file is the instruction set that will run on the Roland MDX-40A (or any other CNC mill).
+12. BUT...the output from PC-Board Cam has integer values that will cause errors.  Feed rates and X, Y and Z axis coordinates cannot be integer values(i.e. F60 X20 will cause and error).  Integer valued quantities must include a trailing zero(i.e. F60.0 X20.0).  
+13. Run the post-processing script on the output file to to correct all these coordinates.
