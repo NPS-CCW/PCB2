@@ -32,13 +32,12 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
 2. Load the NPS-DAZL design rules.
 3. Run Eagle DRC and correct any errors.  This will ensure the signals, pads and vias in the design meet dimensional constraints that can be cut on the mill.
 4. Run Eagle 'Cam Processor' and produce files for the signal layers and drills/holes.
-5. Launch PC-Board Cam and load the .gtl file output from the Cam Processor.  Ensure there are no "Disabled" tracks that show up as brown signal paths.  To "Re-activate" these tracks right click and select "Re-enable Track net".
+5. Launch PC-Board Cam and load the .gtl file output from the Cam Processor.  Ensure there are no "Disabled" tracks that show up as brown signal paths.  To "Re-activate" these tracks right click and select "Re-enable Track net".  Small pads often go unnoticed as disabled at this stage so look closely.
 6. For single sided boards consider flipping the file in PC-Board Cam.  This will allow you to install components on the substrate side of the board with through-hole components being soldered on the copper side.  Makes for much neater and easier to solder boards.
 7. There is a scaling error in the drill locations coming out of Eagle.  Run the drill scaling command line script on the drill file output from Eagle.  This will rescale the drill and hole locations to match the dimensions of the signal layer.
 8. Load the modified drill file into PC-Board Cam.  This is not trivial.  If you are asked to reduce the size of some drills to match their pads, choose "No".  If you are asked if this is a valid import, choose, "Yes".
 9. To align the drills and holes to the signal layer select Display > Drills in the menu bar.  Then use the rotation commands in PC-Board Cam to get the drill and hole orientation rotated the same as the signal layer. 
 10. Next you will notice that the holes do not lay over their corresponding pads in the signal layer.  Use the reference pads tool (bright pink circle targe in the toolbar) to align the two files.
-11. Use the 
 11. Create the milling paths by reselecting the signal layer (usually layer #1) and clicking on Machine > Calculate Contours.  this step will take a moment to complete.  I find that I need to select Resolution > Medium in the pop-up window in order to cut paths betwen all the small signals using the 1/64 tool.
 12. Hit the "Reframe" button to size the PCB based off the elements in your design.
 13. Create a zero reference in the bottom left corner of the PCB by hovering over the "Reframe" button and then selecting the "Origin" tool.  Click "Plot Manually" and then click the bottom left corner of the reframed card.
