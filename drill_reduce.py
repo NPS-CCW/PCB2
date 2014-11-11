@@ -73,8 +73,14 @@ def write_to_output(fp, line, D):
 ##############################################
 #                 MAIN
 ##############################################
-outfile_name = sys.argv[1] + "_mod"
+# Create the outfile handle
+outfile_name = sys.argv[1]
+name_tokens = outfile_name.split('.')
+name_tokens[0] = name_tokens[0]+"_mod"
+outfile_name = ".".join(name_tokens)
 outfile = open(outfile_name, 'w')
+
+# Write the processed lines to the outfile
 for line in lines:
     if line[0] == 'X':
         D = process_x_line(line)
