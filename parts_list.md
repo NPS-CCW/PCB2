@@ -1,6 +1,6 @@
 Parts List 11/11
 ================
-
+- wisk broom to dust off PCBs betwen operations
 - 3 x 1/64 square end mills
 - 2 x v-tip engraving bits
 - 1 x tack cloth for cleaning dust off boards
