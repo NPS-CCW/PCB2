@@ -34,7 +34,11 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
 1. Produce a PCB design in Eagle using the DAZL parts library whenever possible.  Although Eagle make thousands of parts available through its installed libraries, only the DAZL parts have been "package" and "device" parameters that are designed to be cut with the drills and mills we use use at the DAZL.
 2. Load the DAZL design rules.
 3. Run Eagle's DRC and correct any errors.  This will ensure the signals, pads and vias in the design meet dimensional constraints that can be cut on the mill.
-4. Run Eagle 'Cam Processor' and create two sections. The first section should contain your pads, vias, signal and dimension layers, and needs to be in Gerber-RS274X format.  The second section should contain holes and drills and be stored in Excellon format.  For standardization, I name these two files:
+<img src="./images/Eagle_cam.PNG">
+4. Run Eagle 'Cam Processor' and create two sections. 
+  - The first section should contain your pads, vias, signal and dimension layers, and needs to be in Gerber-RS274X format.  
+  - The second section should contain holes and drills and be stored in Excellon format.  
+  - For standardization, I name these two files:
   - `<project path>/signal.gtl`
   - `<project path>/drills.txt` 
 5. Once you have created these two sections click on File > Save Job... in the menu bar.  For standarization I use the following file name:
