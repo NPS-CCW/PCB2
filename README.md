@@ -72,7 +72,7 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
   - Click Machine > Card contour > Define.
   - A small line will appear next to the cursor.  Click on the outline of the card that represents the dimension layer brought from the Eagle file.
   - You will be prompted to confirm that the highlighted track defines the card contour.  If things look good click "Yes".
-  - Next you will get a popup window to "Set card contour".  Ensure the that the cut path radio button identifies "outside contour", unless your card also has interior cuts which are less common.
+  - Next you will get a popup window to "Set card contour".  Ensure the that the cut path radio button identifies "outside contour", unless your card also has interior cuts which are less common. <img src="./images/Card_contour.PNG">
   - Now click Maching > Card contour > Add cutting tabs... which will bring up another popup window.
   - Ensure that "Tab width: " is set to 2mm and click "OK".
   - Complete this step by adding four tabs to the card so that it will remain securely fastened in the mill while most of the material is cut free.  I usually put the tabs at the four cardinal direction making a mental note to avoid the places I know the jig hold-down clamps are touching the card.
@@ -82,27 +82,30 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
   - Once the computer starts it will take a few minutes to complete.  I find that we need to Resolution > Medium in order to cut paths betwen all the small signals.
   - Closely inspect the results of this step to make sure all the important isolation cuts have yellow lines.  I think the optimization in the PC-Board Cam software is pretty awful.  It creates paths that are sometimes triple redundant and you will see it even more when the actual mill starts to cut.  However, the important thing at this stage is to ensure all paths have at least one yellow cut line.
 18. Select tools for each milling operation
-  - Click on Parameters > Selected Tools in the menu.  Ensure that the options match the tools image in this repo.
+  - Click on Parameters > Selected Tools in the menu.  Ensure that the options match the tools image in this repo. <img src="./images/Selected_tools.PNG">
 19. Configure the output data from PC-Board Cam
-  - Select Parameters > Output data format... in the menu.  Ensure the configuration options match the output image in this repo.
-  - Then name the file where PC-Board Cam will store the milling code by inputting a file name in the text box next to the "Create File" radio button.  Our mill does not make automatic tool changes so you will return to this screen and change the name for each milling operation.  I usually cut the signal layer first with the finest bit, and then proceed in the order below.  For standardization use the following filenames:
- - Signal layer: `signal.txt`
- - Drills with #65 bit: `65_drill.txt`
- - Drills with #58 bit: `58_drill.txt`
- - Drills with #44 bit: `44_drill.txt`
- - Outline and circular boring on large holes: `cutline.txt`
-20. It's time to export the code.  You will repeat this step for each milling operation.  The proper sequence of operations is:
+  - Select Parameters > Output data format... in the menu.  Ensure the configuration options match the output image in this repo. <img src="./images/Output_data_format.PNG">
+20. Name the file where PC-Board Cam will store the milling code.
+  - Input a file name in the text box next to the "Create File" radio button.  
+  - Our mill does not make automatic tool changes so you will return to this screen and change the name for each milling operation.  I usually cut the signal layer first with the finest bit, and then proceed in the order below.  
+  - For standardization use the following filenames:
+    * Signal layer: `signal.txt`
+    * Drills with #65 bit: `65_drill.txt`
+    * Drills with #58 bit: `58_drill.txt`
+    * Drills with #44 bit: `44_drill.txt`
+    * Outline and circular boring on large holes: `cutline.txt`
+21. It's time to export the code.  You will repeat this step for each milling operation.  The proper sequence of operations is:
   - Signal layer
   - Drills (an individual file for each drill size)
   - Outline (includes holes that are cut with cicular boring and the card countour)
   - For each file click Machine > Mill... in the menu bar.
   - This will open a popup window where you will select what to include in the file.  Only include one "section" in your files.  The one exception to this is that you will include both the circular boring tool AND the "cutting out" section for the final code file.
-21. Make corrections to the code.The G-Code from PC-Board Cam runs on the Roland MDX-40A (or any other CNC mill). BUT...the output from PC-Board Cam has two problems that get corrected in post processing.
+22. Make corrections to the code.The G-Code from PC-Board Cam runs on the Roland MDX-40A (or any other CNC mill). BUT...the output from PC-Board Cam has two problems that get corrected in post processing.
   - Integer values will cause errors on the MDX-40A.  Feed rates and X, Y and Z axis coordinates cannot be integer values(i.e. F60 X20 will cause and error).  Integer valued quantities must include a trailing zero(i.e. F60.0 X20.0).
   - Circular interpolation commands are used for circular boring of large holes.  However, PC-Board Cam does not seem to take advantage of G41 or G42 NC codes that compensate for the diameter of the cutter.  The result without compensation is that holes are too big.  We correct this in post-processing by adding these offset commands to the code file.
   - Run the post-processing script on the output files to to correct these issues.
-22. Load the correct cutting tool into the mill, and reset the zero for the following conditions:
+23. Load the correct cutting tool into the mill, and reset the zero for the following conditions:
  - Any mill.  The mills are depth controlled and of variable length.  The zero must be reset for each mill that is loaded.
  - First drill bit.  Subsequent drill bits do not require the zero to be reset if they are all loaded where the depth ring is snugly against the collet.
-23. Load the script into the mill and output the program through the mill using Roland's VPanel software.
-24. Repeate this process from step 19 for each milling/drilling operation.
+24. Load the script into the mill and output the program through the mill using Roland's VPanel software.
+25. Repeate this process from step 19 for each milling/drilling operation.
