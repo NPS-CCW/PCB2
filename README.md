@@ -57,7 +57,7 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
   - If you are asked if this is a valid import, choose, "Yes".
 12. Often times the drill file needs to be rotated and/or flipped to match the signal layer.
   - To orient the drills and holes to the signal layer select Display > Drills in the menu bar.  Then use the rotation commands in PC-Board Cam to get the drill and hole orientation rotated the same as the signal layer.  
-  - During this step the visual display of the drills and holes has a rendering bug that seems to make the holes disappear.  Click the "Reframe" button on the menu bar to render the drills again.  If this doesn't bring the holes back into visibility I have had to start over from step XX on many occassions.  It eventually works! 
+  - During this step the visual display of the drills and holes has a rendering bug that seems to make the holes disappear.  Click the "Reframe" button on the menu bar to render the drills again.  If this doesn't bring the holes back into visibility I have had to start over from step 7 on many occassions.  You should NOT need to run the drill reduce script more than once.
 13. Next you will notice that the holes do not lay over their corresponding pads in the signal layer.  
   - Use the reference pads tool (bright pink circle targe in the toolbar) to align the two files.
   - Activate the signal layer and right click right click on a pad the select "Set as reference pad #1".
@@ -97,12 +97,12 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
   - Outline (includes holes that are cut with cicular boring and the card countour)
   - For each file click Machine > Mill... in the menu bar.
   - This will open a popup window where you will select what to include in the file.  Only include one "section" in your files.  The one exception to this is that you will include both the circular boring tool AND the "cutting out" section for the final code file.
-21. Make corrections to the code.The G-Code from PC-Board Cam run on the Roland MDX-40A (or any other CNC mill). BUT...the output from PC-Board Cam has two problems that get corrected in post processing.
+21. Make corrections to the code.The G-Code from PC-Board Cam runs on the Roland MDX-40A (or any other CNC mill). BUT...the output from PC-Board Cam has two problems that get corrected in post processing.
   - Integer values will cause errors on the MDX-40A.  Feed rates and X, Y and Z axis coordinates cannot be integer values(i.e. F60 X20 will cause and error).  Integer valued quantities must include a trailing zero(i.e. F60.0 X20.0).
   - Circular interpolation commands are used for circular boring of large holes.  However, PC-Board Cam does not seem to take advantage of G41 or G42 NC codes that compensate for the diameter of the cutter.  The result without compensation is that holes are too big.  We correct this in post-processing by adding these offset commands to the code file.
   - Run the post-processing script on the output files to to correct these issues.
 22. Load the correct cutting tool into the mill, and reset the zero for the following conditions:
  - Any mill.  The mills are depth controlled and of variable length.  The zero must be reset for each mill that is loaded.
  - First drill bit.  Subsequent drill bits do not require the zero to be reset if they are all loaded where the depth ring is snugly against the collet.
-23. Load the script and the correct cutter into the mill and output the program through the mill using V-panel.
-24. Repeate this process from step 15 for each milling/drilling operation.
+23. Load the script into the mill and output the program through the mill using Roland's VPanel software.
+24. Repeate this process from step 19 for each milling/drilling operation.
