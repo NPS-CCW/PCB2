@@ -113,4 +113,5 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
  - Any mill.  The mills are depth controlled and of variable length.  The zero must be reset for each mill that is loaded.
  - First drill bit.  Subsequent drill bits do not require the zero to be reset if they are all loaded where the depth ring is snugly against the collet.
 24. Load the script into the mill and output the program through the mill using Roland's VPanel software.
+<img src="./images/VPanel_home.PNG">
 25. Repeate this process from step 19 for each milling/drilling operation.
