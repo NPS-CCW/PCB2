@@ -114,4 +114,4 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
  - First drill bit.  Subsequent drill bits do not require the zero to be reset if they are all loaded where the depth ring is snugly against the collet.
 24. Load the script into the mill and output the program through the mill using Roland's VPanel software.
 <img src="./images/VPanel_home.PNG">
-25. Repeate this process from step 19 for each milling/drilling operation.
+25. Repeate this process from step 19 for each milling/drilling operation.  I've ruined a board by vacuuming between milling operations when the shop-vac sucked too hard on the board surface and moved it in the jig.  I recommend just dusting off the surface to make sure things look good between milling operations.
