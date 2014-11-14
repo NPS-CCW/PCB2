@@ -17,6 +17,7 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
 
 1. Turn on the MDX-40A and open V-panel.  Some configutration is required before commencing to work through the tool chain.
 2. Ensure that coordinate system G54 is selected.
+3. Press "View" on the front of the mill to move the machine into positino for changing the bit.  Press "View" for EVERY mill or drill bit change to ensure the machine is in the best positino to get a snug fit without damaging the machine or your workpiece.
 3. Load the 1/64" square end mill and set the zero height using the touch sensor.
 4. Click "Setup..." on VPanel.  
  - Ensure that "NC Code" is selected. 
@@ -46,7 +47,7 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
   - `<project path>/eagle.cam`
 6. Now you want to output the files by clicking on "Process Job" in the cam processor window.
 7. Launch PC-Board Cam and click on File > Open > New Circuit.  Load the `signal.gtl` file you just created in the Eagle Cam Processor.  
-  - You may get a pop-up window on the Board dimensions.  Ensure that the check-box "Reframe around existing circuitry with a margin of _ _ _ mm" is checked  and contains the value 10mm.  We use this value becasue coordinate frame G54 we use on the MDX-40 has XY origin at (0,0).  We want the lower left corner of the PCB to be at (10,10) to ensure we have safe tool clearance between the hold-downs on the jig and most Southwest element on the PCB.  
+  - You may get a pop-up window on the Board dimensions.  Ensure that the check-box "Reframe around existing circuitry with a margin of _ _ _ mm" is checked  and contains the value 10mm.  We use this value because coordinate frame G54 we use on the MDX-40 has XY origin at (0,0).  We want the lower left corner of the PCB to be at (10,10) to ensure we have safe tool clearance between the hold-downs on the jig and most Southwest element on the PCB.  
   - Finally, the "Z thickness" block should reflect the thickness of your board.  We started with FR4 material that is 1.6mm thick so this will probably be in the default settings.  You may get a pop-up warning that the Z travel of the tools goes to about 1.9mm, and "do you want to change the depth cut of these tools".  Select "No" because we want the tools to cut all the way through into the sacrificial substrate.
 8. Ensure there are no "Disabled" tracks that show up as brown signal paths.  
   - To "Re-activate" these tracks right click and select "Re-enable Track net".  
