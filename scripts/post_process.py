@@ -71,8 +71,10 @@ first_letters = ("F", "Z", "X", "Y", "I", "J")
 # We need to keep track of x and y axis maximums
 xy = ("X", "Y")
 num_char = (".", "+", "-")
-x_max = 0;
-y_max = 0;
+x_max = "Null"
+x_min = "Null"
+y_max = "Null"
+y_min = "Null"
 
 # Correct for integers in the intermediate file
 interfile = open(inter_name, 'w')
@@ -99,12 +101,22 @@ for line in lines:
 			try:
 				num = float(num)
 				if(token[0] == "X"):
-					if num > x_max:
+					if(x_max == "Null"): 
 						x_max = num
+						x_min = num
+					elif num > x_max:
+						x_max = num
+					elif num < x_min:
+						x_min = num
 				
 				if(token[0] == "Y"):
-					if num > y_max:
+					if(y_max == "Null"): 
 						y_max = num
+						y_min = num
+					elif num > y_max:
+						y_max = num
+					elif num < y_min:
+						y_min = num
 			
 			except ValueError:
 				pass
@@ -192,5 +204,5 @@ for line in lines[1:]:
 outfile.write(lines[-1]) 
 	
 print("Output written to: " + outfile_name)
-print("max X is: " + str(x_max))
-print("max Y is: " + str(y_max))
+print("X max/min are: " + str(x_max) + " / " + str(x_min))
+print("Y max/min are: " + str(y_max) + " / " + str(y_min))
