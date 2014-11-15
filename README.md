@@ -17,7 +17,7 @@ We are trying to quickly prototype single and double layer PCBs using a CNC mill
 
 1. Turn on the MDX-40A and open V-panel.  Some configutration is required before commencing to work through the tool chain.
 2. Ensure that coordinate system G54 is selected.
-3. Press "View" on the front of the mill to move the machine into positino for changing the bit.  Press "View" for EVERY mill or drill bit change to ensure the machine is in the best positino to get a snug fit without damaging the machine or your workpiece.
+3. Press "View" on the front of the mill to move the machine into positino for changing the bit.  **Press "View" for EVERY mill or drill bit change** to ensure the machine is in the best position to get a snug fit without damaging the machine or your workpiece.
 3. Load the 1/64" square end mill and set the zero height using the touch sensor.
 4. Click "Setup..." on VPanel.  
  - Ensure that "NC Code" is selected. 
