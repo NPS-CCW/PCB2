@@ -64,10 +64,15 @@ name_tokens = outfile_name.split('.')
 name_tokens[0] = name_tokens[0]+"_final"
 outfile_name = ".".join(name_tokens)
 
-
 # We need to make sure there is a decimal point in 
 # commands for the feed rate and all axes
 first_letters = ("F", "Z", "X", "Y", "I", "J")
+
+# We need to keep track of x and y axis maximums
+xy = ("X", "Y")
+num_char = (".", "+", "-")
+x_max = 0;
+y_max = 0;
 
 # Correct for integers in the intermediate file
 interfile = open(inter_name, 'w')
@@ -82,7 +87,28 @@ for line in lines:
 		if token.startswith(first_letters):
 			if '.' not in token:
 				token = token + ".0"
-
+		
+		#Track maximum dims
+		if token.startswith(xy):
+			num = ""
+			for char in token:
+				# print(char)
+				if char.isdigit() or (char in num_char):
+					num = num + char
+		
+			try:
+				num = float(num)
+				if(token[0] == "X"):
+					if num > x_max:
+						x_max = num
+				
+				if(token[0] == "Y"):
+					if num > y_max:
+						y_max = num
+			
+			except ValueError:
+				pass
+				
 		# Rejoin
 		adjusted_line = adjusted_line + token + " "
 
@@ -166,3 +192,5 @@ for line in lines[1:]:
 outfile.write(lines[-1]) 
 	
 print("Output written to: " + outfile_name)
+print("max X is: " + str(x_max))
+print("max Y is: " + str(y_max))
