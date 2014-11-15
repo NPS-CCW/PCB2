@@ -6,10 +6,10 @@ Workflow and scripts to support printed circuit board (PCB) milling with the Rol
 ##Goal
 
 We are trying to quickly prototype single and double layer PCBs using a CNC mill and software tools.  This repo uses a software tool chain composed of:
- - Eagle (Version 7.0.0 Lite)
- - PC-Board Cam (Version 8/10/2014)
- - Roland VPanel for MDX-40A
- - Custom Python scripts written by DAZL makers.
+ - Eagle (Version 7.0.0 Lite) [download here...](http://www.cadsoftusa.com/download-eagle/?language=en)
+ - PC-Board Cam (Version 8/10/2014) install from CD.  [Manf site](http://www.pdi3d.com/PC_Board_Prototyping_Kit_p/pcb-cam.htm)
+ - Roland VPanel for MDX-40A [download here...](http://support.rolanddga.com/docs/Documents/departments/Technical%20Services/Downloads/mdx40a_vpanel_102.exe)
+ - Custom Python scripts written by DAZL makers. [../scripts dir] (./scripts)
 
 ##Preparation
 
