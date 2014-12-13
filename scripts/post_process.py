@@ -171,6 +171,8 @@ for line in lines[1:]:
 				# so that offset will comments moving to the right which
 				# complements the G02 clockwise circular interpolation
 				# useed in the PC-Board Cam software.
+				#FYI - G17 directs the machine to conduct circular interp
+				#in the X-Y plane.
 				lines[index-1] = "G17 G42 D01 " + lines[index-1]
 				
 				# The line with circular interpolation is PROCEEDED by
